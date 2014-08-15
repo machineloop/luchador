@@ -1,0 +1,37 @@
+{
+  "name": "luchador",
+  "description": "Your Luchador Mask",
+  "version": "0.1.0",
+  "homepage": "http://ziteboard.com",
+  "authors": [{
+    "name": "Ziteboard",
+    "url": "http://ziteboard.com"
+  }],
+  "main": "index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "famo.us",
+    "luchador"
+  ],
+  "license": "MPL 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "lib"
+  ],
+  "dependencies": {
+    "requirejs": "*",
+    "require-cs": "*",
+    "require-css": "*",
+    "require-less": "*",
+    "require-is": "*",
+    "require-jade": "*",
+    "jquery":"*",
+    "gyro.js":"*",
+    "famous-polyfills": "https://github.com/Famous/polyfills.git",
+    "famous": "https://github.com/Famous/famous.git"
+  }
+}

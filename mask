@@ -1,0 +1,59 @@
+#!/bin/bash
+
+_bn=$(basename $0)
+
+function help/mask() {
+  cat << EOF
+
+Luchador Mask
+
+Usage: ${_bn} options
+              -p PORT   - Set server port (default: 8082)
+              -n name   - Set ngrok name
+              -r        - Start ngrok remote
+              -i        - Install required npm packages
+              -h
+
+EOF
+  exit 1
+}
+
+### commands
+function mask/install() {
+  sudo npm -g install http-server requirejs
+  return $?
+}
+
+function mask/ngrok() {
+  _n=""
+  if ! test -z "${name}"; then
+    _n="-subdomain=${name}"
+  fi
+  ngrok ${_n} ${port}
+  return $?
+}
+
+### args
+_c="http"
+port=8082
+name=""
+
+while getopts n:p:ihr o; do
+  case "$o" in
+    n) name=$OPTARG;;
+    p) port=$OPTARG;;
+    i)
+      mask/install
+      exit $?
+    ;;
+    r)
+      mask/ngrok
+      exit $?
+    ;;
+    h|*)
+      help/mask
+    ;;
+  esac
+done
+
+http-server -p ${port} .
